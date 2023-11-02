@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DropFileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('drop', [DropFileController::class, 'index']);
+Route::post('drop', [DropFileController::class, 'store']);
+Route::get('drop/{filetitle}', [DropFileController::class, 'show']);
+Route::get('drop/{filetitle}/download', [DropFileController::class, 'download']);
+Route::get('drop/{id}/destroy', [DropFileController::class, 'destroy']);
